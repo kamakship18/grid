@@ -1,0 +1,123 @@
+/Users/kamakshipandoh/.matplotlib is not a writable directory
+Matplotlib created a temporary cache directory at /var/folders/zs/k5116wdx2cv52mz3q_gn8xg00000gn/T/matplotlib-qywj_k8g because there was an issue with the default path (/Users/kamakshipandoh/.matplotlib); it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+  File "/Users/kamakshipandoh/Desktop/grid/flipkart_traffic/lib/joblib/externals/loky/backend/context.py", line 249, in _count_physical_cores
+    cpu_count_physical = _count_physical_cores_darwin()
+  File "/Users/kamakshipandoh/Desktop/grid/flipkart_traffic/lib/joblib/externals/loky/backend/context.py", line 318, in _count_physical_cores_darwin
+    return int(cpu_info)
+============================================================
+CELL 2: Loading data...
+Train: (77299, 11), Test: (41778, 10)
+Target (demand) stats:
+count    7.729900e+04
+mean     9.394238e-02
+std      1.421905e-01
+min      6.245650e-07
+25%      1.822723e-02
+50%      4.775994e-02
+75%      1.085951e-01
+max      1.000000e+00
+Name: demand, dtype: float64
+
+============================================================
+CELL 3: Feature Engineering...
+Unique geohashes: 1249, geo×timeslot combos: 70876
+
+============================================================
+CELL 4: Full feature pipeline...
+Features after engineering: 74
+
+============================================================
+CELL 5: Preparing ML features...
+X shape: (77299, 63), X_test shape: (41778, 63)
+NaN in X: 0, NaN in X_test: 0
+
+============================================================
+CELL 6+7: LightGBM with pre-tuned best params...
+LGB Train R2: 0.997268
+  Fold 1 R2: 0.995805
+  Fold 2 R2: 0.996327
+  Fold 3 R2: 0.994635
+  Fold 4 R2: 0.996179
+  Fold 5 R2: 0.996455
+
+OOF LGB R2: 0.995883 -> Score: 99.59
+
+============================================================
+CELL 8: XGBoost Optuna tuning (30 trials)...
+  0%|          | 0/30 [00:00<?, ?it/s]Best trial: 0. Best value: 0.98661:   0%|          | 0/30 [00:05<?, ?it/s]Best trial: 0. Best value: 0.98661:   3%|▎         | 1/30 [00:05<02:35,  5.36s/it]Best trial: 0. Best value: 0.98661:   3%|▎         | 1/30 [00:23<02:35,  5.36s/it]Best trial: 0. Best value: 0.98661:   7%|▋         | 2/30 [00:23<05:55, 12.71s/it]Best trial: 0. Best value: 0.98661:   7%|▋         | 2/30 [00:34<05:55, 12.71s/it]Best trial: 0. Best value: 0.98661:  10%|█         | 3/30 [00:34<05:21, 11.89s/it]Best trial: 0. Best value: 0.98661:  10%|█         | 3/30 [00:45<05:21, 11.89s/it]Best trial: 0. Best value: 0.98661:  13%|█▎        | 4/30 [00:45<05:06, 11.80s/it]Best trial: 4. Best value: 0.988838:  13%|█▎        | 4/30 [01:11<05:06, 11.80s/it]Best trial: 4. Best value: 0.988838:  17%|█▋        | 5/30 [01:11<06:59, 16.79s/it]Best trial: 4. Best value: 0.988838:  17%|█▋        | 5/30 [01:22<06:59, 16.79s/it]Best trial: 4. Best value: 0.988838:  20%|██        | 6/30 [01:22<05:56, 14.87s/it]Best trial: 4. Best value: 0.988838:  20%|██        | 6/30 [01:26<05:56, 14.87s/it]Best trial: 4. Best value: 0.988838:  23%|██▎       | 7/30 [01:26<04:19, 11.26s/it]Best trial: 4. Best value: 0.988838:  23%|██▎       | 7/30 [01:34<04:19, 11.26s/it]Best trial: 4. Best value: 0.988838:  27%|██▋       | 8/30 [01:34<03:43, 10.14s/it]Best trial: 4. Best value: 0.988838:  27%|██▋       | 8/30 [01:38<03:43, 10.14s/it]Best trial: 4. Best value: 0.988838:  30%|███       | 9/30 [01:38<02:55,  8.38s/it]Best trial: 4. Best value: 0.988838:  30%|███       | 9/30 [01:48<02:55,  8.38s/it]Best trial: 4. Best value: 0.988838:  33%|███▎      | 10/30 [01:48<02:57,  8.88s/it]Best trial: 10. Best value: 0.994308:  33%|███▎      | 10/30 [02:15<02:57,  8.88s/it]Best trial: 10. Best value: 0.994308:  37%|███▋      | 11/30 [02:15<04:35, 14.50s/it]Best trial: 11. Best value: 0.994815:  37%|███▋      | 11/30 [02:46<04:35, 14.50s/it]Best trial: 11. Best value: 0.994815:  40%|████      | 12/30 [02:46<05:51, 19.53s/it]Best trial: 11. Best value: 0.994815:  40%|████      | 12/30 [03:00<05:51, 19.53s/it]Best trial: 11. Best value: 0.994815:  43%|████▎     | 13/30 [03:00<04:59, 17.64s/it]Best trial: 11. Best value: 0.994815:  43%|████▎     | 13/30 [03:07<04:59, 17.64s/it]Best trial: 11. Best value: 0.994815:  47%|████▋     | 14/30 [03:07<03:50, 14.38s/it]Best trial: 11. Best value: 0.994815:  47%|████▋     | 14/30 [03:27<03:50, 14.38s/it]Best trial: 11. Best value: 0.994815:  50%|█████     | 15/30 [03:27<04:02, 16.19s/it]Best trial: 11. Best value: 0.994815:  50%|█████     | 15/30 [03:38<04:02, 16.19s/it]Best trial: 11. Best value: 0.994815:  53%|█████▎    | 16/30 [03:38<03:24, 14.57s/it]Best trial: 11. Best value: 0.994815:  53%|█████▎    | 16/30 [03:46<03:24, 14.57s/it]Best trial: 11. Best value: 0.994815:  57%|█████▋    | 17/30 [03:46<02:46, 12.77s/it]Best trial: 11. Best value: 0.994815:  57%|█████▋    | 17/30 [03:55<02:46, 12.77s/it]Best trial: 11. Best value: 0.994815:  60%|██████    | 18/30 [03:55<02:18, 11.56s/it]Best trial: 18. Best value: 0.995692:  60%|██████    | 18/30 [04:06<02:18, 11.56s/it]Best trial: 18. Best value: 0.995692:  63%|██████▎   | 19/30 [04:06<02:06, 11.49s/it]Best trial: 18. Best value: 0.995692:  63%|██████▎   | 19/30 [04:13<02:06, 11.49s/it]Best trial: 18. Best value: 0.995692:  67%|██████▋   | 20/30 [04:13<01:38,  9.88s/it]Best trial: 18. Best value: 0.995692:  67%|██████▋   | 20/30 [04:18<01:38,  9.88s/it]Best trial: 18. Best value: 0.995692:  70%|███████   | 21/30 [04:18<01:15,  8.43s/it]Best trial: 21. Best value: 0.995998:  70%|███████   | 21/30 [04:28<01:15,  8.43s/it]Best trial: 21. Best value: 0.995998:  73%|███████▎  | 22/30 [04:28<01:13,  9.14s/it]Best trial: 21. Best value: 0.995998:  73%|███████▎  | 22/30 [04:33<01:13,  9.14s/it]Best trial: 21. Best value: 0.995998:  77%|███████▋  | 23/30 [04:33<00:55,  7.90s/it]Best trial: 23. Best value: 0.996288:  77%|███████▋  | 23/30 [04:43<00:55,  7.90s/it]Best trial: 23. Best value: 0.996288:  80%|████████  | 24/30 [04:43<00:50,  8.44s/it]Best trial: 23. Best value: 0.996288:  80%|████████  | 24/30 [04:48<00:50,  8.44s/it]Best trial: 23. Best value: 0.996288:  83%|████████▎ | 25/30 [04:48<00:36,  7.24s/it]Best trial: 23. Best value: 0.996288:  83%|████████▎ | 25/30 [04:54<00:36,  7.24s/it]Best trial: 23. Best value: 0.996288:  87%|████████▋ | 26/30 [04:54<00:27,  6.88s/it]Best trial: 23. Best value: 0.996288:  87%|████████▋ | 26/30 [04:58<00:27,  6.88s/it]Best trial: 23. Best value: 0.996288:  90%|█████████ | 27/30 [04:58<00:18,  6.27s/it]Best trial: 23. Best value: 0.996288:  90%|█████████ | 27/30 [05:03<00:18,  6.27s/it]Best trial: 23. Best value: 0.996288:  93%|█████████▎| 28/30 [05:03<00:11,  5.87s/it]Best trial: 23. Best value: 0.996288:  93%|█████████▎| 28/30 [05:09<00:11,  5.87s/it]Best trial: 23. Best value: 0.996288:  97%|█████████▋| 29/30 [05:09<00:05,  5.66s/it]Best trial: 23. Best value: 0.996288:  97%|█████████▋| 29/30 [05:13<00:05,  5.66s/it]Best trial: 23. Best value: 0.996288: 100%|██████████| 30/30 [05:13<00:00,  5.23s/it]Best trial: 23. Best value: 0.996288: 100%|██████████| 30/30 [05:13<00:00, 10.44s/it]
+Matplotlib is building the font cache; this may take a moment.
+Best XGB R2: 0.996288
+  Fold 1 R2: 0.996018
+  Fold 2 R2: 0.996139
+  Fold 3 R2: 0.996024
+  Fold 4 R2: 0.996546
+  Fold 5 R2: 0.996715
+
+OOF XGB R2: 0.996286 -> Score: 99.63
+
+============================================================
+CELL 9: CatBoost training...
+  Fold 1 R2: 0.997363
+  Fold 2 R2: 0.997526
+  Fold 3 R2: 0.997574
+  Fold 4 R2: 0.997615
+  Fold 5 R2: 0.997980
+
+OOF CatBoost R2: 0.997612 -> Score: 99.76
+
+============================================================
+CELL 10: Ensemble with optimal weights...
+Optimal weights: LGB=0.200, XGB=0.100, CB=0.700
+Ensemble OOF R2: 0.997615 -> Score: 99.76
+Prediction stats: min=0.0007, max=1.0000, mean=0.1094
+
+============================================================
+CELL 11: Neighbor-based residual correction...
+Neighbor-corrected predictions computed.
+
+============================================================
+CELL 12: Generating submission files...
+submission.csv saved: (41778, 2)
+   Index    demand
+0      0  0.042646
+1      1  0.031845
+2      2  0.029306
+3      3  0.070252
+4      4  0.106961
+
+submission_corrected.csv saved: (41778, 2)
+
+Submission validated successfully!
+
+============================================================
+CELL 13: Feature importance...
+Top 20 features by LGB importance:
+                feature  importance
+53          geo_ts_mean       50404
+54           geo_ts_std       27252
+59   geo_ts_vs_geo_mean       16926
+0                   day        9201
+5             time_slot        8701
+40              gh_mean        5402
+39          slot_x_road        4949
+45               gh_q25        3000
+46               gh_q75        2705
+41            gh_median        2665
+22        road_type_ord        2137
+61  location_importance        2050
+2           Temperature        1917
+42               gh_std        1768
+43               gh_min        1558
+48              gh_skew        1555
+44               gh_max        1345
+37       temp_x_weather        1319
+49               gh_iqr        1208
+12         timeslot_cos        1186
+feature_importance.png saved.
+
+============================================================
+ALL DONE!
+OOF LGB R2:        0.995883 -> Score: 99.59
+OOF XGB R2:        0.996286 -> Score: 99.63
+OOF CatBoost R2:   0.997612 -> Score: 99.76
+Ensemble OOF R2:   0.997615 -> Score: 99.76
